@@ -24,7 +24,7 @@ Config.set("kivy", "keyboard_mode", "systemanddock")
 # kivy imports
 from kivy.app import App  # noqa: E402
 from kivy.lang.builder import Builder  # noqa: E402
-
+from kivy.uix.slider import Slider
 
 class TemplateApp(App):
     """Base class for the main Kivy app."""
@@ -64,11 +64,7 @@ class TemplateApp(App):
         while True:
             await asyncio.sleep(1.0)
 
-            # increment the counter using internal libs and update the gui
-            self.counter = ops.add(self.counter, 1)
-            self.root.ids.counter_label.text = (
-                f"{'Tic' if self.counter % 2 == 0 else 'Tac'}: {self.counter}"
-            )
+
 
 
 if __name__ == "__main__":
@@ -77,7 +73,6 @@ if __name__ == "__main__":
     # Add additional command line arguments here
 
     args = parser.parse_args()
-
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(TemplateApp().app_func())
